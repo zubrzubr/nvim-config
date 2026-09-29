@@ -6,3 +6,8 @@ Install tree sitter cli
 brew install tree-sitter-cli
 ```
 
+Install fzf-lua
+
+```bash
+brew install fzf fd
+```

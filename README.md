@@ -11,6 +11,7 @@ Install fzf-lua
 ```bash
 brew install fzf fd
 ```
+
 # nvim-mine
 
 Personal Neovim config, built from scratch. Launch with `v` (`NVIM_APPNAME=nvim-mine nvim`).
@@ -24,6 +25,17 @@ lua/config/
   keymaps.lua         -- general keymaps
   lazy.lua            -- lazy.nvim bootstrap
 lua/plugins/          -- one file per plugin (or group)
+  colorscheme.lua     -- tokyonight
+  which-key.lua       -- keymap hints
+  treesitter.lua      -- syntax parsing / highlighting
+  fzf.lua             -- fuzzy finder
+  lsp.lua             -- mason, basedpyright, ruff, lua_ls
+  completion.lua      -- blink.cmp
+  formatting.lua      -- conform.nvim
+  git.lua             -- gitsigns
+  lualine.lua         -- statusline
+  neo-tree.lua        -- file tree
+  terminal.lua        -- toggleterm
 ```
 
 ## Leader
@@ -36,7 +48,24 @@ lua/plugins/          -- one file per plugin (or group)
 |---|---|
 | `<leader>w` | Save file |
 | `<Esc>` | Clear search highlight |
-| `<C-h>` `<C-j>` `<C-k>` `<C-l>` | Move between splits |
+| `<C-h>` `<C-j>` `<C-k>` `<C-l>` | Move between splits (and tree) |
+
+## File tree (neo-tree)
+
+| Key | Action |
+|---|---|
+| `<leader>e` | Toggle tree, reveal current file |
+| `<CR>` | Open file / expand directory |
+| `a` | Add file (trailing `/` = directory) |
+| `r` / `d` | Rename / delete |
+| `m` / `c` | Move / copy |
+| `s` / `S` | Open in vertical / horizontal split |
+| `P` | Preview file |
+| `H` | Toggle hidden files |
+| `/` | Filter by name |
+| `?` | Show all tree keymaps |
+
+`v .` in a project directory opens the tree as a sidebar.
 
 ## Find (fzf-lua)
 
@@ -98,20 +127,37 @@ Built into Neovim 0.11+:
 | `<leader>gb` | Blame line |
 | `<leader>gd` | Diff file |
 
-## Files (oil.nvim)
+## Terminal (toggleterm)
 
 | Key | Action |
 |---|---|
-| `-` | Open parent directory (again to go up) |
-| `<CR>` | Open file / directory |
-| edit a line | Rename |
-| `dd` | Delete |
-| new line | Create file (trailing `/` = directory) |
-| `:w` | Apply changes (asks for confirmation) |
+| `<C-\>` | Toggle floating terminal (any mode) |
+| `2<C-\>` | Toggle a second, separate terminal |
+| `<Esc><Esc>` | Leave terminal mode (scroll / copy output) |
+| `i` | Back to typing in the terminal |
+
+Long-running processes (`docker compose up`, dev server) live in a separate terminal tab.
+
+## Selecting text (visual mode)
+
+| Key | Action |
+|---|---|
+| `v` | Select by character |
+| `V` | Select whole lines |
+| `<C-v>` | Select a block (column) |
+| `gv` | Reselect last selection |
+| `o` | Jump to the other end of the selection |
+| `viw` / `vi(` / `vi"` / `vip` | Select word / inside parens / inside quotes / paragraph |
+| `v$` | From cursor to end of line |
+| `VG` | From current line to end of file |
+| `Vgg` | From current line to start of file |
+| `ggVG` | Whole file |
+
+With a selection: `y` copy, `d` delete, `c` change, `>` / `<` indent, `:` run a command on it.
 
 ## Editing essentials
 
-Commands are **action + object**: `d` delete, `c` change, `y` yank, combined with `w` word, `i(` inside parens, `ip` paragraph, `t,` till comma, etc.
+Commands are **action + object**: `d` delete, `c` change, `y` yank, combined with `w` word, `i(` inside parens, `ip` paragraph, `t,` till comma, `G` end of file, etc. Often no selection is needed.
 
 | Key | Action |
 |---|---|
@@ -120,6 +166,8 @@ Commands are **action + object**: `d` delete, `c` change, `y` yank, combined wit
 | `da(` | Delete parens with contents |
 | `yi{` | Yank inside braces |
 | `dd` / `yy` / `p` | Delete line / yank line / paste below |
+| `D` / `C` | Delete to end of line / change to end of line |
+| `dG` / `yG` | Delete / yank to end of file |
 | `>ip` / `<ip` | Indent / dedent paragraph |
 | `J` | Join line with next |
 | `.` | Repeat last change |

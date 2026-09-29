@@ -11,7 +11,6 @@ Install fzf-lua
 ```bash
 brew install fzf fd
 ```
-
 # nvim-mine
 
 Personal Neovim config, built from scratch. Launch with `v` (`NVIM_APPNAME=nvim-mine nvim`).
@@ -63,6 +62,7 @@ Custom:
 | `<leader>cr` | Rename symbol |
 | `<leader>ca` | Code action |
 | `<leader>cd` | Line diagnostics (float) |
+| `<leader>cf` | Format buffer (also runs on save) |
 
 Built into Neovim 0.11+:
 
@@ -77,6 +77,37 @@ Built into Neovim 0.11+:
 | `<C-s>` (insert) | Signature help |
 | `]d` / `[d` | Next / previous diagnostic |
 | `<C-o>` / `<C-i>` | Jump back / forward |
+
+## Completion (blink.cmp)
+
+| Key | Action |
+|---|---|
+| `<C-space>` | Open completion menu |
+| `<C-n>` / `<C-p>` | Next / previous item |
+| `<C-y>` | Accept |
+| `<C-e>` | Close menu |
+
+## Git (gitsigns)
+
+| Key | Action |
+|---|---|
+| `]h` / `[h` | Next / previous hunk |
+| `<leader>gp` | Preview hunk |
+| `<leader>gs` | Stage hunk |
+| `<leader>gr` | Reset hunk |
+| `<leader>gb` | Blame line |
+| `<leader>gd` | Diff file |
+
+## Files (oil.nvim)
+
+| Key | Action |
+|---|---|
+| `-` | Open parent directory (again to go up) |
+| `<CR>` | Open file / directory |
+| edit a line | Rename |
+| `dd` | Delete |
+| new line | Create file (trailing `/` = directory) |
+| `:w` | Apply changes (asks for confirmation) |
 
 ## Editing essentials
 
@@ -106,6 +137,7 @@ Commands are **action + object**: `d` delete, `c` change, `y` yank, combined wit
 |---|---|
 | `:Lazy` | Plugin manager |
 | `:Mason` | LSP servers / tools |
+| `:ConformInfo` | Formatters for current buffer |
 | `:checkhealth vim.lsp` | Which LSP clients are attached |
 | `:checkhealth nvim-treesitter` | Treesitter status |
 | `:Tutor` | Built-in Vim tutorial |

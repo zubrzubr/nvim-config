@@ -14,7 +14,7 @@ brew install fzf fd
 
 # nvim-mine
 
-Personal Neovim config, built from scratch. Launch with `v` (`NVIM_APPNAME=nvim-mine nvim`).
+Personal Neovim config, built from scratch (stowed to `~/.config/nvim`).
 
 ## Structure
 
@@ -25,14 +25,18 @@ lua/config/
   keymaps.lua         -- general keymaps
   lazy.lua            -- lazy.nvim bootstrap
 lua/plugins/          -- one file per plugin (or group)
-  colorscheme.lua     -- tokyonight
+  colorscheme.lua     -- gruvbox
   which-key.lua       -- keymap hints
   treesitter.lua      -- syntax parsing / highlighting
+  context.lua         -- sticky function/class context
+  indent.lua          -- indent guides
+  surround.lua        -- surround motions
   fzf.lua             -- fuzzy finder
   lsp.lua             -- mason, basedpyright, ruff, lua_ls
   completion.lua      -- blink.cmp
   formatting.lua      -- conform.nvim
   git.lua             -- gitsigns
+  diffview.lua        -- diffview.nvim
   lualine.lua         -- statusline
   neo-tree.lua        -- file tree
   terminal.lua        -- toggleterm

@@ -25,7 +25,7 @@ lua/config/
   keymaps.lua         -- general keymaps
   lazy.lua            -- lazy.nvim bootstrap
 lua/plugins/          -- one file per plugin (or group)
-  colorscheme.lua     -- tokyonight
+  colorscheme.lua     -- gruvbox
   which-key.lua       -- keymap hints
   treesitter.lua      -- syntax parsing / highlighting
   fzf.lua             -- fuzzy finder

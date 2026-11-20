@@ -3,9 +3,12 @@ return {
   version = "1.*", -- release tag downloads a prebuilt binary, no Rust needed
   event = "InsertEnter",
   opts = {
-    -- "default": <C-y> accept, <C-n>/<C-p> navigate, <C-space> open menu
-    -- alternatives: "enter" (Enter accepts) or "super-tab" (Tab accepts)
-    keymap = { preset = "default" },
+    -- "super-tab": Tab accepts, <C-n>/<C-p> or <C-j>/<C-k> navigate, <C-space> open menu
+    keymap = {
+      preset = "super-tab",
+      ["<C-j>"] = { "select_next", "fallback" },
+      ["<C-k>"] = { "select_prev", "fallback" },
+    },
     completion = {
       documentation = { auto_show = true }, -- show docs next to the menu
     },
